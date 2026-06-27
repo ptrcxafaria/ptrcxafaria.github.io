@@ -1,0 +1,480 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patrícia Faria — Marketing Generalist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text-primary: #1a1a18;
+      --text-secondary: #5f5e5a;
+      --text-muted: #888780;
+      --surface-0: #f5f4f0;
+      --surface-1: #f0efe9;
+      --surface-2: #ffffff;
+      --border: rgba(0,0,0,0.1);
+      --border-strong: rgba(0,0,0,0.18);
+      --accent: #2a5bd7;
+      --accent-bg: #eef2fc;
+      --success-bg: #eaf3de;
+      --success-text: #3b6d11;
+      --radius: 8px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background: var(--surface-0);
+      padding: 0 1.5rem;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 0 4rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.75rem 0;
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 160px;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 4rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .hero p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: var(--surface-1);
+      border: 0.5px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-initials {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      color: var(--text-muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 12px;
+      color: var(--text-secondary);
+      background: var(--surface-2);
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 12px;
+    }
+
+    section { margin-bottom: 3.5rem; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .work-item { margin-bottom: 2rem; }
+
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.25rem;
+    }
+
+    .work-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .work-date {
+      font-size: 13px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+
+    .work-company {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+
+    .work-bullets {
+      list-style: none;
+      padding: 0;
+    }
+
+    .work-bullets li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding: 3px 0 3px 1rem;
+      position: relative;
+    }
+
+    .work-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    hr {
+      border: none;
+      border-top: 0.5px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    .project-card {
+      background: var(--surface-2);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+      transition: border-color 0.15s;
+    }
+
+    .project-card:hover { border-color: var(--border-strong); }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .badge {
+      font-size: 11px;
+      border-radius: 20px;
+      padding: 3px 10px;
+      white-space: nowrap;
+      margin-left: 0.75rem;
+    }
+
+    .badge-green { background: var(--success-bg); color: var(--success-text); }
+    .badge-blue { background: var(--accent-bg); color: var(--accent); }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tool {
+      font-size: 11px;
+      color: var(--text-muted);
+      background: var(--surface-0);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 2rem;
+    }
+
+    .skill-group-title {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-list {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .contact-block {
+      background: var(--surface-2);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .contact-block h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-block p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-0);
+    }
+
+    .contact-link:hover { border-color: var(--border-strong); color: var(--text-primary); }
+
+    @media (max-width: 540px) {
+      .hero { grid-template-columns: 1fr; }
+      .photo { width: 100px; height: 100px; order: -1; }
+      .hero h1 { font-size: 30px; }
+      .work-header { flex-direction: column; }
+      .work-date { margin-left: 0; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <nav>
+      <a href="index.html" class="nav-name">Patrícia Faria</a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <h1>Marketing generalist,<br><em>startup native.</em></h1>
+        <p>4+ years building marketing from scratch across B2B startups and SaaS — from rebranding and content to automations and sales enablement. Most effective when I own things end-to-end in small, fast-moving teams.</p>
+        <div class="tags">
+          <span class="tag">Azores, Portugal · Remote</span>
+          <span class="tag">B2B SaaS</span>
+          <span class="tag">Brand & Content</span>
+          <span class="tag">AI-native workflows</span>
+        </div>
+      </div>
+      <div class="photo">
+        <!-- Replace with: <img src="photo.jpg" alt="Patrícia Faria"> -->
+        <span class="photo-initials">PF</span>
+      </div>
+    </section>
+
+    <section id="work">
+      <p class="section-label">Work experience</p>
+
+      <div class="work-item">
+        <div class="work-header">
+          <span class="work-title">Business Development & Marketing Generalist</span>
+          <span class="work-date">Aug 2024 – Apr 2026</span>
+        </div>
+        <div class="work-company">Quantistry · Berlin, Germany (Remote) · Promoted from Junior BDM</div>
+        <ul class="work-bullets">
+          <li>Led full company rebrand end-to-end with an external agency — website, brand guidelines, pitch decks, and all branded assets launching simultaneously.</li>
+          <li>Built sales collateral including client-facing 2-pagers the sales team credited as key to securing demos and advancing enterprise conversations.</li>
+          <li>Set up HubSpot email automations, Webflow form routing, and HTML/CSS fixes — owned the full digital presence including SEO and LinkedIn.</li>
+          <li>Researched and coordinated international conference strategy, resulting in the company attending and building partnerships at key events.</li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <div class="work-item">
+        <div class="work-header">
+          <span class="work-title">Product Marketing Intern</span>
+          <span class="work-date">Feb 2023 – Aug 2024</span>
+        </div>
+        <div class="work-company">Leato · B2B Learning & Development SaaS</div>
+        <ul class="work-bullets">
+          <li>Conducted high-volume LinkedIn prospecting, sourcing ~250 HR and People Operations contacts daily across Europe to build the sales pipeline.</li>
+          <li>Managed LinkedIn content creation and publishing to support brand visibility and lead generation.</li>
+          <li>During the company's wind-down, stepped up alongside the founder to keep operations running — rapidly learning invoicing, procurement, and fulfillment for corporate accounts with no prior experience.</li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <div class="work-item">
+        <div class="work-header">
+          <span class="work-title">Digital Marketing Intern</span>
+          <span class="work-date">Oct 2021 – Aug 2022</span>
+        </div>
+        <div class="work-company">Terceira Gest · Marketing Agency</div>
+        <ul class="work-bullets">
+          <li>Managed social media content, copywriting, and branded assets simultaneously across 7+ clients, adapting tone and strategy to each brand.</li>
+          <li>Led client meetings to define brand direction and content strategy, and supported ad campaign execution.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects">
+      <p class="section-label">Projects</p>
+
+      <a href="books.html" class="project-card">
+        <div class="project-header">
+          <span class="project-title">AI Book Recommender</span>
+          <span class="badge badge-green">Live tool</span>
+        </div>
+        <p class="project-desc">Enter 1–3 favourite books and get AI-powered recommendations based on shared themes and tropes — complete with cover images. Built with Claude API, Google Books API, and n8n automations, with data logging to Google Sheets.</p>
+        <div class="project-tools">
+          <span class="tool">Claude API</span>
+          <span class="tool">Google Books API</span>
+          <span class="tool">n8n</span>
+          <span class="tool">Google Sheets</span>
+          <span class="tool">HTML/CSS/JS</span>
+        </div>
+      </a>
+
+      <a href="rebrand.html" class="project-card">
+        <div class="project-header">
+          <span class="project-title">Quantistry Rebrand</span>
+          <span class="badge badge-blue">Case study</span>
+        </div>
+        <p class="project-desc">Led a full company rebrand end-to-end over 3 months — brand guidelines, website overhaul, pitch decks, and a complete suite of branded assets, all launching simultaneously. Sole internal lead managing an external agency.</p>
+        <div class="project-tools">
+          <span class="tool">Figma</span>
+          <span class="tool">Webflow</span>
+          <span class="tool">Adobe Illustrator</span>
+        </div>
+      </a>
+    </section>
+
+    <section id="skills">
+      <p class="section-label">Skills & tools</p>
+      <div class="skills-grid">
+        <div>
+          <p class="skill-group-title">Marketing</p>
+          <p class="skill-list">Brand strategy · Content creation · SEO · Copywriting · LinkedIn marketing · Sales enablement · Lead generation · Event strategy</p>
+        </div>
+        <div>
+          <p class="skill-group-title">Tools</p>
+          <p class="skill-list">HubSpot · Google Analytics · Webflow · Figma · Adobe Illustrator · Notion · HTML/CSS</p>
+        </div>
+        <div>
+          <p class="skill-group-title">AI & Automation</p>
+          <p class="skill-list">Claude · ChatGPT · Notion AI · n8n · HubSpot automation · Google Sheets workflows</p>
+        </div>
+        <div>
+          <p class="skill-group-title">Education</p>
+          <p class="skill-list">BA Marketing & Advertising · ESCS Lisbon · 2017–2020</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-block">
+        <h2>Let's work together</h2>
+        <p>Open to fully remote B2B marketing roles. Available from September 2026.</p>
+        <div class="contact-links">
+          <a href="mailto:patriciafaria@outlook.de" class="contact-link">patriciafaria@outlook.de</a>
+          <a href="https://linkedin.com/in/patriciasilvafaria" class="contact-link" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
