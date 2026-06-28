@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Book Recommender — Patrícia Faria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Bellavoir';
+      src: url('fonts/BellavoirSerif_PERSONAL_USE_ONLY.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --ink: #1a1612;
+      --ink-soft: #4a4440;
+      --ink-muted: #8a7f75;
+      --border: rgba(0,0,0,0.08);
+      --border-strong: rgba(0,0,0,0.15);
+      --accent: #8a6a50;
+      --accent-light: #c4a882;
+      --surface: #faf8f5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--white);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .nav-name {
+      font-family: 'Bellavoir', 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--ink); }
+
+    /* HERO */
+    .hero {
+      padding: 10rem 6rem 6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-botanical {
+      position: absolute;
+      right: 0;
+      top: 60px;
+      width: 300px;
+      opacity: 0.12;
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-left > * {
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+    .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+    .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+    .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
+
+    .project-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Bellavoir', 'Cormorant Garamond', serif;
+      font-size: 64px;
+      font-weight: 400;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--ink-muted);
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--ink-soft);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 540px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 2.5rem;
+      padding: 1.25rem 0;
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .meta-item {}
+    .meta-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 3px;
+    }
+    .meta-value {
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    /* TOOL */
+    .tool-section {
+      background: var(--surface);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      padding: 5rem 6rem;
+    }
+
+    .tool-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .tool-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .tool-label::after {
+      content: '';
+      flex: 1;
+      height: 0.5px;
+      background: var(--border-strong);
+    }
+
+    .tool-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .tool-subtitle {
+      font-size: 14px;
+      color: var(--ink-muted);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-style: italic;
+    }
+
+    .book-form { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
+
+    .input-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .input-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    .book-input {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border: 0.5px solid var(--border-strong);
+      background: var(--white);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .book-input:focus { border-color: var(--accent-light); }
+    .book-input::placeholder { color: var(--ink-muted); font-style: italic; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: var(--ink);
+      color: white;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn:hover { background: var(--accent); }
+    .submit-btn:disabled { background: var(--ink-muted); cursor: not-allowed; }
+
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      font-size: 13px;
+      color: var(--ink-muted);
+      font-style: italic;
+    }
+
+    .error-msg {
+      display: none;
+      text-align: center;
+      padding: 1rem;
+      font-size: 13px;
+      color: #b85450;
+      border: 0.5px solid #f0d0ce;
+      background: #fdf5f5;
+      margin-top: 1rem;
+    }
+
+    /* RESULTS */
+    .results { display: none; margin-top: 3rem; }
+
+    .themes-block {
+      background: var(--white);
+      border: 0.5px solid var(--border-strong);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .themes-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .themes-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .recommendations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .book-card {
+      border: 0.5px solid var(--border-strong);
+      padding: 1.25rem;
+      background: var(--white);
+    }
+
+    .book-cover {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 1rem;
+      background: var(--surface);
+    }
+
+    .book-cover-placeholder {
+      width: 100%;
+      aspect-ratio: 2/3;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 32px;
+    }
+
+    .book-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+
+    .book-author {
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .book-reason {
+      font-size: 12px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .try-again-btn {
+      width: 100%;
+      padding: 0.875rem;
+      background: transparent;
+      color: var(--ink-muted);
+      border: 0.5px solid var(--border-strong);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .try-again-btn:hover {
+      border-color: var(--accent-light);
+      color: var(--accent);
+    }
+
+    /* HOW IT WORKS */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 0.5px;
+      background: var(--border-strong);
+    }
+
+    .section-title {
+      font-family: 'Bellavoir', 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .section-title em { font-style: italic; color: var(--ink-muted); }
+
+    .flow-nodes {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 2.5rem 0;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+
+    .flow-node {
+      flex-shrink: 0;
+      text-align: center;
+      width: 130px;
+    }
+
+    .flow-node-inner {
+      background: var(--surface);
+      border: 0.5px solid var(--border-strong);
+      padding: 1rem 0.75rem;
+    }
+
+    .flow-node-inner.highlight {
+      border-color: var(--accent-light);
+      background: #fdf8f3;
+    }
+
+    .flow-node-icon { font-size: 20px; margin-bottom: 8px; }
+    .flow-node-title { font-size: 12px; font-weight: 500; line-height: 1.3; }
+    .flow-node-sub { font-size: 10px; color: var(--ink-muted); margin-top: 4px; }
+
+    .flow-arrow {
+      flex-shrink: 0;
+      color: var(--accent-light);
+      font-size: 18px;
+      padding: 0 6px;
+      margin-top: -8px;
+    }
+
+    .tools-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 2rem;
+    }
+
+    .tool-pill {
+      font-size: 11px;
+      color: var(--ink-muted);
+      border: 0.5px solid var(--border-strong);
+      padding: 5px 14px;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* FOOTER */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--ink-muted);
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { grid-template-columns: 1fr; padding: 8rem 2rem 4rem; }
+      .hero h1 { font-size: 44px; }
+      .tool-section { padding: 4rem 1.5rem; }
+      .recommendations-grid { grid-template-columns: 1fr; }
+      .section { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-name">Patrícia Faria</a>
+    <a href="index.html" class="nav-back">← Back to portfolio</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-left">
+      <p class="project-label">AI Project · Personal · 2025</p>
+      <h1>AI Book<br><em>Recommender</em></h1>
+      <p class="hero-desc">Enter 1–3 of your favourite books and get personalised recommendations based on the themes and tropes you love — complete with cover images and a reason why each one fits.</p>
+      <div class="meta-row">
+        <div class="meta-item">
+          <div class="meta-label">Built with</div>
+          <div class="meta-value">Claude API · Google Books API · n8n · Google Sheets</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Cost per use</div>
+          <div class="meta-value">~$0.003</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-botanical">
+      <img src="images/medium-bouquet-png.png" alt="">
+    </div>
+  </div>
+
+  <!-- LIVE TOOL -->
+  <div class="tool-section">
+    <div class="tool-inner">
+      <p class="tool-label">Try it</p>
+      <h2 class="tool-title">Find your next favourite book</h2>
+      <p class="tool-subtitle">Enter 1, 2, or 3 books — Book 2 and 3 are optional</p>
+
+      <div class="book-form">
+        <div class="input-group">
+          <label class="input-label" for="book1">Book 1 *</label>
+          <input class="book-input" type="text" id="book1" placeholder="e.g. The Name of the Wind">
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="book2">Book 2 (optional)</label>
+          <input class="book-input" type="text" id="book2" placeholder="e.g. Nevernight">
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="book3">Book 3 (optional)</label>
+          <input class="book-input" type="text" id="book3" placeholder="e.g. An Ember in the Ashes">
+        </div>
+        <button class="submit-btn" id="submitBtn" onclick="getRecommendations()">Get recommendations</button>
+      </div>
+
+      <div class="loading" id="loading">Finding books that match your taste...</div>
+      <div class="error-msg" id="errorMsg">Something went wrong. Please try again.</div>
+
+      <div class="results" id="results">
+        <div class="themes-block">
+          <div class="themes-label">Themes & tropes detected</div>
+          <div class="themes-text" id="themesText"></div>
+        </div>
+        <div class="recommendations-grid" id="recommendationsGrid"></div>
+        <button class="try-again-btn" onclick="tryAgain()">Suggest different books →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="section-header reveal">
+      <span class="section-label">How it works</span>
+      <div class="section-line"></div>
+    </div>
+    <h2 class="section-title reveal">The <em>workflow</em></h2>
+
+    <div class="flow-nodes reveal">
+      <div class="flow-node">
+        <div class="flow-node-inner">
+          <div class="flow-node-icon">📖</div>
+          <div class="flow-node-title">Book Input</div>
+          <div class="flow-node-sub">1–3 favourites</div>
+        </div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-node-inner highlight">
+          <div class="flow-node-icon">✦</div>
+          <div class="flow-node-title">Claude API</div>
+          <div class="flow-node-sub">Extract themes & recommend</div>
+        </div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-node-inner">
+          <div class="flow-node-icon">⚙️</div>
+          <div class="flow-node-title">Parse JSON</div>
+          <div class="flow-node-sub">Structure the data</div>
+        </div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-node-inner highlight">
+          <div class="flow-node-icon">📚</div>
+          <div class="flow-node-title">Google Books</div>
+          <div class="flow-node-sub">Fetch cover images</div>
+        </div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-node-inner">
+          <div class="flow-node-icon">✓</div>
+          <div class="flow-node-title">Error handling</div>
+          <div class="flow-node-sub">Fallback for missing covers</div>
+        </div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-node-inner">
+          <div class="flow-node-icon">📊</div>
+          <div class="flow-node-title">Google Sheets</div>
+          <div class="flow-node-sub">Log all submissions</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools-row reveal">
+      <span class="tool-pill">Claude Haiku API</span>
+      <span class="tool-pill">Google Books API</span>
+      <span class="tool-pill">n8n (self-hosted)</span>
+      <span class="tool-pill">Google Sheets</span>
+      <span class="tool-pill">JavaScript</span>
+      <span class="tool-pill">HTML / CSS</span>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Patrícia Faria</span>
+    <a href="index.html" style="color: var(--ink-muted); text-decoration: none;">← Back to portfolio</a>
+  </footer>
+
+  <script>
+    const ANTHROPIC_KEY = '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';
+    const GOOGLE_BOOKS_KEY = 'AIzaSyBwbRt1BgVqoqoOl1tbjueVUzEmiFB10HE';
+
+    let previousRecommendations = [];
+
+    async function getRecommendations(isDifferent = false) {
+      const book1 = document.getElementById('book1').value.trim();
+      const book2 = document.getElementById('book2').value.trim();
+      const book3 = document.getElementById('book3').value.trim();
+
+      if (!book1) {
+        alert('Please enter at least one book.');
+        return;
+      }
+
+      const btn = document.getElementById('submitBtn');
+      const loading = document.getElementById('loading');
+      const results = document.getElementById('results');
+      const errorMsg = document.getElementById('errorMsg');
+
+      btn.disabled = true;
+      loading.style.display = 'block';
+      results.style.display = 'none';
+      errorMsg.style.display = 'none';
+
+      const books = [book1, book2, book3].filter(Boolean).join(', ');
+      const avoidText = previousRecommendations.length > 0
+        ? ` Do NOT recommend any of these books: ${previousRecommendations.join(', ')}.`
+        : '';
+
+      try {
+        const response = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'x-api-key': ANTHROPIC_KEY,
+            'anthropic-version': '2023-06-01',
+            'content-type': 'application/json',
+            'anthropic-dangerous-direct-browser-calls': 'true'
+          },
+          body: JSON.stringify({
+            model: 'claude-haiku-4-5-20251001',
+            max_tokens: 800,
+            messages: [{
+              role: 'user',
+              content: `These are someone's favourite books: ${books}. Identify the main themes and tropes they share, then recommend EXACTLY 3 different books with similar themes.${avoidText} Respond ONLY with valid JSON, no markdown, no backticks: {"themes": "brief theme summary in one sentence", "recommendations": [{"title": "Book Title", "author": "Author Name", "reason": "one sentence why it fits"}, {"title": "Book Title", "author": "Author Name", "reason": "one sentence why it fits"}, {"title": "Book Title", "author": "Author Name", "reason": "one sentence why it fits"}]}`
+            }]
+          })
+        });
+
+        const data = await response.json();
+        const raw = data.content[0].text;
+        const cleaned = raw.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+        const parsed = JSON.parse(cleaned);
+
+        document.getElementById('themesText').textContent = parsed.themes;
+
+        previousRecommendations = parsed.recommendations.map(r => `${r.title} by ${r.author}`);
+
+        const grid = document.getElementById('recommendationsGrid');
+        grid.innerHTML = '';
+
+        for (const rec of parsed.recommendations) {
+          const cover = await fetchCover(rec.title, rec.author);
+          const card = document.createElement('div');
+          card.className = 'book-card';
+          card.innerHTML = `
+            ${cover
+              ? `<img src="${cover}" alt="${rec.title}" class="book-cover">`
+              : `<div class="book-cover-placeholder">📖</div>`
+            }
+            <div class="book-title">${rec.title}</div>
+            <div class="book-author">${rec.author}</div>
+            <div class="book-reason">${rec.reason}</div>
+          `;
+          grid.appendChild(card);
+        }
+
+        loading.style.display = 'none';
+        results.style.display = 'block';
+
+      } catch (err) {
+        loading.style.display = 'none';
+        errorMsg.style.display = 'block';
+        console.error(err);
+      }
+
+      btn.disabled = false;
+    }
+
+    async function fetchCover(title, author) {
+      try {
+        const query = encodeURIComponent(`intitle:${title} inauthor:${author}`);
+        const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${GOOGLE_BOOKS_KEY}`);
+        const data = await res.json();
+        return data?.items?.[0]?.volumeInfo?.imageLinks?.thumbnail || null;
+      } catch {
+        return null;
+      }
+    }
+
+    function tryAgain() {
+      getRecommendations(true);
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
