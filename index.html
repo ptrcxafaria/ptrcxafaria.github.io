@@ -29,48 +29,20 @@
     }
 
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--ink);
-      background: var(--white);
-    }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: var(--ink); background: var(--white); }
 
     /* NAV */
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
       padding: 1.25rem 3rem;
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(8px);
       border-bottom: 0.5px solid var(--border);
     }
-
-    .nav-name {
-      font-family: 'Bellavoir', 'Cormorant Garamond', serif;
-      font-size: 20px;
-      color: var(--ink);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-
+    .nav-name { font-family: 'Bellavoir', 'Cormorant Garamond', serif; font-size: 20px; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; }
     .nav-links { display: flex; gap: 2rem; align-items: center; }
-    .nav-links a {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .nav-links a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--ink); }
 
     /* HERO */
@@ -92,527 +64,134 @@
       z-index: 2;
     }
 
-    .hero-label {
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 2rem;
-    }
+    .hero-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; }
 
     .hero h1 {
       font-family: 'Bellavoir', 'Cormorant Garamond', serif;
-      font-size: 72px;
-      font-weight: 400;
-      line-height: 1.0;
-      margin-bottom: 2rem;
-      color: var(--ink);
+      font-size: 72px; font-weight: 400; line-height: 1.0; margin-bottom: 2rem;
     }
+    .hero h1 em { font-style: italic; color: var(--ink-muted); }
 
-    .hero h1 em {
-      font-style: italic;
-      color: var(--ink-muted);
-    }
-
-    .hero-desc {
-      font-size: 15px;
-      color: var(--ink-soft);
-      line-height: 1.8;
-      max-width: 460px;
-      margin-bottom: 2.5rem;
-    }
+    .hero-desc { font-size: 15px; color: var(--ink-soft); line-height: 1.8; max-width: 460px; margin-bottom: 2.5rem; }
 
     .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2.5rem; }
-    .hero-tag {
-      font-size: 11px;
-      color: var(--ink-muted);
-      border: 0.5px solid var(--border-strong);
-      border-radius: 20px;
-      padding: 5px 14px;
-    }
+    .hero-tag { font-size: 11px; color: var(--ink-muted); border: 0.5px solid var(--border-strong); border-radius: 20px; padding: 5px 14px; }
 
-    .hero-actions { display: flex; align-items: center; gap: 2rem; }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 0.5px solid var(--ink);
-      padding-bottom: 2px;
-      transition: opacity 0.2s;
-    }
+    .hero-actions { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 0.5px solid var(--ink); padding-bottom: 2px; transition: opacity 0.2s; }
     .hero-cta:hover { opacity: 0.6; }
+    .hero-cv { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 0.5px solid var(--accent-light); padding: 8px 18px; transition: all 0.2s; }
+    .hero-cv:hover { background: var(--accent); color: white; }
 
-    .hero-cv {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      text-decoration: none;
-      border: 0.5px solid var(--accent-light);
-      padding: 8px 18px;
-      transition: background 0.2s, color 0.2s;
-    }
-    .hero-cv:hover {
-      background: var(--accent);
-      color: white;
-    }
-
-    .hero-right {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-photo {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 75%;
-      max-width: 420px;
-      z-index: 2;
-    }
-
-    .hero-photo img {
-      width: 100%;
-      height: 600px;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-    }
-
-    .hero-botanical {
-      position: absolute;
-      right: -60px;
-      top: -40px;
-      width: 85%;
-      opacity: 0.85;
-      z-index: 1;
-      pointer-events: none;
-    }
-
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-photo { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 75%; max-width: 420px; z-index: 2; }
+    .hero-photo img { width: 100%; height: 600px; object-fit: cover; object-position: top; display: block; }
+    .hero-botanical { position: absolute; right: -60px; top: -40px; width: 85%; opacity: 0.85; z-index: 1; pointer-events: none; animation: float 8s ease-in-out infinite; }
     .hero-botanical img { width: 100%; }
 
     /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
-    }
-
-    .hero-left > * {
-      animation: fadeUp 0.8s ease both;
-    }
+    .hero-left > * { animation: fadeUp 0.8s ease both; }
     .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
     .hero-left > *:nth-child(2) { animation-delay: 0.25s; }
     .hero-left > *:nth-child(3) { animation-delay: 0.4s; }
     .hero-left > *:nth-child(4) { animation-delay: 0.5s; }
     .hero-left > *:nth-child(5) { animation-delay: 0.6s; }
 
-    .hero-botanical { animation: float 8s ease-in-out infinite; }
-
-    /* SCROLL REVEAL */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* SECTIONS */
-    .section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 6rem 3rem;
-    }
+    .section { max-width: 1100px; margin: 0 auto; padding: 6rem 3rem; }
+    .surface-section { background: var(--surface); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
+    .divider { max-width: 1100px; margin: 0 auto; height: 0.5px; background: var(--border); }
 
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-label {
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      white-space: nowrap;
-    }
-
-    .section-line {
-      flex: 1;
-      height: 0.5px;
-      background: var(--border-strong);
-    }
-
-    .section-title {
-      font-family: 'Bellavoir', 'Cormorant Garamond', serif;
-      font-size: 48px;
-      font-weight: 400;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-
-    .section-title em {
-      font-style: italic;
-      color: var(--ink-muted);
-    }
-
-    /* DIVIDER */
-    .divider {
-      max-width: 1100px;
-      margin: 0 auto;
-      height: 0.5px;
-      background: var(--border);
-    }
+    .section-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 3.5rem; }
+    .section-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
+    .section-line { flex: 1; height: 0.5px; background: var(--border-strong); }
+    .section-title { font-family: 'Bellavoir', 'Cormorant Garamond', serif; font-size: 48px; font-weight: 400; line-height: 1.1; margin-bottom: 1rem; }
+    .section-title em { font-style: italic; color: var(--ink-muted); }
 
     /* WORK EXPERIENCE */
-    .work-grid { display: grid; gap: 3rem; }
-
-    .work-item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 2rem;
-    }
-
-    .work-meta { padding-top: 4px; }
-
-    .work-date {
-      font-size: 12px;
-      color: var(--ink-muted);
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.04em;
-    }
-
-    .work-company {
-      font-size: 13px;
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .work-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 400;
-      margin-bottom: 0.25rem;
-    }
-
-    .work-subtitle {
-      font-size: 13px;
-      color: var(--ink-muted);
-      margin-bottom: 1rem;
-      font-style: italic;
-    }
-
+    .work-item { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; margin-bottom: 2.5rem; }
+    .work-date { font-size: 12px; color: var(--ink-muted); margin-bottom: 0.5rem; letter-spacing: 0.04em; }
+    .work-company { font-size: 13px; color: var(--accent); font-weight: 500; }
+    .work-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; margin-bottom: 0.25rem; }
+    .work-subtitle { font-size: 13px; color: var(--ink-muted); margin-bottom: 1rem; font-style: italic; }
     .work-bullets { list-style: none; }
-    .work-bullets li {
-      font-size: 14px;
-      color: var(--ink-soft);
-      line-height: 1.7;
-      padding: 4px 0 4px 1.25rem;
-      position: relative;
-    }
-    .work-bullets li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--accent-light);
-      font-size: 12px;
-    }
+    .work-bullets li { font-size: 14px; color: var(--ink-soft); line-height: 1.7; padding: 4px 0 4px 1.25rem; position: relative; }
+    .work-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--accent-light); font-size: 12px; }
+    .work-divider { height: 0.5px; background: var(--border); margin: 2rem 0; }
 
-    .work-divider {
-      height: 0.5px;
-      background: var(--border);
-      margin: 1rem 0;
-    }
+    /* REBRAND HIGHLIGHT */
+    .rebrand-section { max-width: 1100px; margin: 0 auto; padding: 6rem 3rem; }
 
-    /* FEATURED WORK */
-    .featured-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
+    .rebrand-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 3rem; }
+    .rebrand-intro-text {}
+    .rebrand-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .rebrand-title { font-family: 'Bellavoir', 'Cormorant Garamond', serif; font-size: 52px; font-weight: 400; line-height: 1.05; margin-bottom: 1.5rem; }
+    .rebrand-title em { font-style: italic; color: var(--ink-muted); }
+    .rebrand-desc { font-size: 15px; color: var(--ink-soft); line-height: 1.8; margin-bottom: 2rem; }
+    .rebrand-stats { display: flex; gap: 2.5rem; }
+    .rebrand-stat-number { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; color: var(--accent-light); line-height: 1; }
+    .rebrand-stat-label { font-size: 11px; color: var(--ink-muted); margin-top: 4px; }
 
-    .featured-item {}
+    .rebrand-intro-links { display: flex; flex-direction: column; justify-content: flex-end; gap: 1rem; }
+    .rebrand-link { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; padding: 12px 20px; border: 0.5px solid var(--border-strong); transition: all 0.2s; width: fit-content; }
+    .rebrand-link.primary { background: var(--ink); color: white; border-color: var(--ink); }
+    .rebrand-link.primary:hover { background: var(--accent); border-color: var(--accent); }
+    .rebrand-link.secondary { color: var(--ink-muted); }
+    .rebrand-link.secondary:hover { border-color: var(--accent-light); color: var(--ink); }
 
-    .featured-label {
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
+    .rebrand-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .rebrand-img-wrap {}
+    .rebrand-img-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
+    .rebrand-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+    .rebrand-dot.before { background: var(--ink-muted); }
+    .rebrand-dot.after { background: var(--accent); }
+    .rebrand-img { width: 100%; display: block; border: 0.5px solid var(--border-strong); transition: opacity 0.2s; }
+    .rebrand-img:hover { opacity: 0.88; }
 
-    .featured-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-    }
-
-    .featured-desc {
-      font-size: 13px;
-      color: var(--ink-soft);
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-
-    .featured-link {
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 0.5px solid var(--accent-light);
-      padding-bottom: 2px;
-      display: inline-block;
-      margin-bottom: 1.5rem;
-    }
-
-    .featured-link:hover { opacity: 0.7; }
-
-    .featured-img {
-      width: 100%;
-      display: block;
-      border: 0.5px solid var(--border);
-      transition: opacity 0.2s;
-    }
-
-    .featured-img:hover { opacity: 0.88; }
-
-    .case-studies-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    /* SOCIAL MEDIA WORK */
-    .client-section { margin-bottom: 4rem; }
-
-    .client-label {
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .client-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-weight: 400;
-      margin-bottom: 0.25rem;
-    }
-
-    .client-desc {
-      font-size: 13px;
-      color: var(--ink-muted);
-      margin-bottom: 1.5rem;
-      font-style: italic;
-    }
-
-    .image-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
-    }
-
-    .image-grid img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .image-grid img:hover {
-      transform: scale(1.03);
-      opacity: 0.9;
-    }
-
-    /* PROJECTS */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    .project-card {
-      border: 0.5px solid var(--border-strong);
-      border-radius: 2px;
-      overflow: hidden;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .project-card:hover {
-      border-color: var(--accent-light);
-      transform: translateY(-3px);
-    }
-
-    .project-card-inner { padding: 1.75rem; }
-
-    .project-tag {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .project-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 400;
-      margin-bottom: 0.75rem;
-    }
-
-    .project-desc {
-      font-size: 13px;
-      color: var(--ink-soft);
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
-    }
-
+    /* AI PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .project-card { border: 0.5px solid var(--border-strong); padding: 1.75rem; text-decoration: none; color: inherit; display: block; transition: border-color 0.2s, transform 0.2s; }
+    .project-card:hover { border-color: var(--accent-light); transform: translateY(-3px); }
+    .project-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .project-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; margin-bottom: 0.75rem; }
+    .project-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 1.25rem; }
     .project-tools { display: flex; flex-wrap: wrap; gap: 6px; }
-    .project-tool {
-      font-size: 10px;
-      color: var(--ink-muted);
-      border: 0.5px solid var(--border-strong);
-      border-radius: 2px;
-      padding: 3px 8px;
-    }
+    .project-tool { font-size: 10px; color: var(--ink-muted); border: 0.5px solid var(--border-strong); padding: 3px 8px; }
+
+    /* SOCIAL MEDIA */
+    .client-section { margin-bottom: 4rem; }
+    .client-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.5rem; }
+    .client-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; margin-bottom: 0.25rem; }
+    .client-desc { font-size: 13px; color: var(--ink-muted); margin-bottom: 1.5rem; font-style: italic; }
+    .image-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .image-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .image-grid img:hover { transform: scale(1.03); opacity: 0.9; }
 
     /* SKILLS */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-
-    .skill-group-title {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .skill-list {
-      font-size: 13px;
-      color: var(--ink-soft);
-      line-height: 2;
-    }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+    .skill-group-title { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .skill-list { font-size: 13px; color: var(--ink-soft); line-height: 2; }
 
     /* CONTACT */
-    .contact-section {
-      background: var(--surface);
-      border-top: 0.5px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 6rem 3rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .contact-botanical {
-      position: absolute;
-      right: 0;
-      bottom: -40px;
-      width: 320px;
-      opacity: 0.15;
-      pointer-events: none;
-      animation: float 10s ease-in-out infinite;
-    }
-
-    .contact-title {
-      font-family: 'Bellavoir', 'Cormorant Garamond', serif;
-      font-size: 52px;
-      font-weight: 400;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-
-    .contact-title em {
-      font-style: italic;
-      color: var(--ink-muted);
-    }
-
-    .contact-desc {
-      font-size: 15px;
-      color: var(--ink-soft);
-      line-height: 1.8;
-      margin-bottom: 2.5rem;
-    }
-
+    .contact-section { background: var(--surface); border-top: 0.5px solid var(--border); position: relative; overflow: hidden; }
+    .contact-inner { max-width: 1100px; margin: 0 auto; padding: 6rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .contact-botanical { position: absolute; right: 0; bottom: -40px; width: 320px; opacity: 0.15; pointer-events: none; animation: float 10s ease-in-out infinite; }
+    .contact-title { font-family: 'Bellavoir', 'Cormorant Garamond', serif; font-size: 52px; font-weight: 400; line-height: 1.1; margin-bottom: 1rem; }
+    .contact-title em { font-style: italic; color: var(--ink-muted); }
+    .contact-desc { font-size: 15px; color: var(--ink-soft); line-height: 1.8; margin-bottom: 2.5rem; }
     .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link { display: flex; align-items: center; gap: 1rem; font-size: 14px; color: var(--ink-soft); text-decoration: none; padding: 1rem 1.5rem; border: 0.5px solid var(--border-strong); transition: border-color 0.2s, color 0.2s; }
+    .contact-link:hover { border-color: var(--accent-light); color: var(--ink); }
+    .contact-link-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); display: block; margin-bottom: 2px; }
 
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: 14px;
-      color: var(--ink-soft);
-      text-decoration: none;
-      padding: 1rem 1.5rem;
-      border: 0.5px solid var(--border-strong);
-      transition: border-color 0.2s, color 0.2s;
-    }
+    footer { border-top: 0.5px solid var(--border); padding: 1.5rem 3rem; display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-muted); letter-spacing: 0.06em; }
 
-    .contact-link:hover {
-      border-color: var(--accent-light);
-      color: var(--ink);
-    }
-
-    .contact-link-label {
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 0.5px solid var(--border);
-      padding: 1.5rem 3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      color: var(--ink-muted);
-      letter-spacing: 0.06em;
-    }
-
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1rem; }
@@ -621,16 +200,17 @@
       .hero h1 { font-size: 48px; }
       .hero-right { height: 400px; }
       .section { padding: 4rem 1.5rem; }
-      .section-title { font-size: 36px; }
+      .rebrand-section { padding: 4rem 1.5rem; }
+      .rebrand-intro { grid-template-columns: 1fr; gap: 2rem; }
+      .rebrand-title { font-size: 36px; }
+      .rebrand-images { grid-template-columns: 1fr; }
       .work-item { grid-template-columns: 1fr; gap: 0.5rem; }
-      .featured-grid { grid-template-columns: 1fr; }
-      .image-grid { grid-template-columns: repeat(3, 1fr); }
       .projects-grid { grid-template-columns: 1fr; }
+      .image-grid { grid-template-columns: repeat(3, 1fr); }
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .contact-inner { grid-template-columns: 1fr; }
       .contact-title { font-size: 36px; }
-      .case-studies-grid { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -640,9 +220,9 @@
     <a href="#" class="nav-name">Patrícia Faria</a>
     <div class="nav-links">
       <a href="#work">Work</a>
-      <a href="#featured">Featured</a>
-      <a href="#social">Design</a>
+      <a href="#rebrand">Rebrand</a>
       <a href="#projects">Projects</a>
+      <a href="#social">Design</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -674,6 +254,8 @@
     </div>
   </section>
 
+  <div class="divider"></div>
+
   <!-- WORK EXPERIENCE -->
   <section class="section" id="work">
     <div class="section-header reveal">
@@ -682,99 +264,142 @@
     </div>
     <h2 class="section-title reveal">Work <em>history</em></h2>
 
-    <div class="work-grid">
-
-      <div class="work-item reveal">
-        <div class="work-meta">
-          <div class="work-date">Aug 2024 – Apr 2026</div>
-          <div class="work-company">Quantistry</div>
-        </div>
-        <div>
-          <div class="work-title">Business Development & Marketing Generalist</div>
-          <div class="work-subtitle">Promoted from Junior BDM · Berlin, Germany (Remote)</div>
-          <ul class="work-bullets">
-            <li>Led full company rebrand end-to-end with an external agency — website, brand guidelines, pitch decks, and all branded assets launching simultaneously.</li>
-            <li>Built sales collateral including client-facing 2-pagers the sales team credited as key to securing demos and advancing enterprise conversations.</li>
-            <li>Set up HubSpot email automations, Webflow form routing, and HTML/CSS fixes — owned the full digital presence including SEO and LinkedIn.</li>
-            <li>Researched and coordinated international conference strategy, resulting in the company attending and building partnerships at key events including Slush and Materials Week Europe.</li>
-          </ul>
-        </div>
+    <div class="work-item reveal">
+      <div>
+        <div class="work-date">Aug 2024 – Apr 2026</div>
+        <div class="work-company">Quantistry</div>
       </div>
-
-      <div class="work-divider"></div>
-
-      <div class="work-item reveal">
-        <div class="work-meta">
-          <div class="work-date">Feb 2023 – Aug 2024</div>
-          <div class="work-company">Leato</div>
-        </div>
-        <div>
-          <div class="work-title">Product Marketing Intern</div>
-          <div class="work-subtitle">B2B Learning & Development SaaS</div>
-          <ul class="work-bullets">
-            <li>Conducted high-volume LinkedIn prospecting, sourcing ~250 HR and People Operations contacts daily across Europe to build the sales pipeline.</li>
-            <li>Managed LinkedIn content creation and publishing to support brand visibility and lead generation.</li>
-            <li>During the company's wind-down, stepped up alongside the founder to keep operations running — rapidly learning invoicing, procurement, and fulfillment for corporate accounts.</li>
-          </ul>
-        </div>
+      <div>
+        <div class="work-title">Business Development & Marketing Generalist</div>
+        <div class="work-subtitle">Promoted from Junior BDM · Berlin, Germany (Remote)</div>
+        <ul class="work-bullets">
+          <li>Led full company rebrand end-to-end with an external agency — website, brand guidelines, pitch decks, and all branded assets launching simultaneously.</li>
+          <li>Built sales collateral including client-facing 2-pagers the sales team credited as key to securing demos and advancing enterprise conversations.</li>
+          <li>Set up HubSpot email automations, Webflow form routing, and HTML/CSS fixes — owned the full digital presence including SEO and LinkedIn.</li>
+          <li>Researched and coordinated international conference strategy, resulting in the company attending and building partnerships at Slush and Materials Week Europe.</li>
+        </ul>
       </div>
+    </div>
 
-      <div class="work-divider"></div>
+    <div class="work-divider"></div>
 
-      <div class="work-item reveal">
-        <div class="work-meta">
-          <div class="work-date">Oct 2021 – Aug 2022</div>
-          <div class="work-company">Terceira Gest</div>
-        </div>
-        <div>
-          <div class="work-title">Digital Marketing Intern</div>
-          <div class="work-subtitle">Marketing Agency · Azores, Portugal</div>
-          <ul class="work-bullets">
-            <li>Managed social media content, copywriting, and branded assets simultaneously across 7+ clients, adapting tone and strategy to each brand.</li>
-            <li>Led client meetings to define brand direction and content strategy, and supported ad campaign execution.</li>
-          </ul>
-        </div>
+    <div class="work-item reveal">
+      <div>
+        <div class="work-date">Feb 2023 – Aug 2024</div>
+        <div class="work-company">Leato</div>
       </div>
+      <div>
+        <div class="work-title">Product Marketing Intern</div>
+        <div class="work-subtitle">B2B Learning & Development SaaS</div>
+        <ul class="work-bullets">
+          <li>Conducted high-volume LinkedIn prospecting, sourcing ~250 HR and People Operations contacts daily across Europe to build the sales pipeline.</li>
+          <li>Managed LinkedIn content creation and publishing to support brand visibility and lead generation.</li>
+          <li>During the company's wind-down, stepped up alongside the founder — rapidly learning invoicing, procurement, and fulfillment for corporate accounts.</li>
+        </ul>
+      </div>
+    </div>
 
+    <div class="work-divider"></div>
+
+    <div class="work-item reveal">
+      <div>
+        <div class="work-date">Oct 2021 – Aug 2022</div>
+        <div class="work-company">Terceira Gest</div>
+      </div>
+      <div>
+        <div class="work-title">Digital Marketing Intern</div>
+        <div class="work-subtitle">Marketing Agency · Azores, Portugal</div>
+        <ul class="work-bullets">
+          <li>Managed social media content, copywriting, and branded assets simultaneously across 7+ clients, adapting tone and strategy to each brand.</li>
+          <li>Led client meetings to define brand direction and content strategy, and supported ad campaign execution.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- FEATURED WORK -->
-  <section class="section" id="featured">
+  <!-- REBRAND HIGHLIGHT -->
+  <section class="rebrand-section" id="rebrand">
+    <div class="rebrand-intro">
+      <div class="reveal">
+        <div class="rebrand-tag">Featured project · Brand · Quantistry</div>
+        <h2 class="rebrand-title">A full company<br><em>rebrand,</em><br>end-to-end.</h2>
+        <p class="rebrand-desc">3 months. One agency. 9 deliverables launching simultaneously. I was the primary internal lead — from briefing the agency and reviewing brand guidelines to producing all internal assets myself and coordinating a single launch moment across every touchpoint.</p>
+        <div class="rebrand-stats">
+          <div>
+            <div class="rebrand-stat-number">3</div>
+            <div class="rebrand-stat-label">months to deliver</div>
+          </div>
+          <div>
+            <div class="rebrand-stat-number">9</div>
+            <div class="rebrand-stat-label">asset types delivered</div>
+          </div>
+          <div>
+            <div class="rebrand-stat-number">4</div>
+            <div class="rebrand-stat-label">customer success stories</div>
+          </div>
+        </div>
+      </div>
+      <div class="rebrand-intro-links reveal">
+        <a href="rebrand.html" class="rebrand-link primary">View full case study →</a>
+        <a href="https://quantistry.ai" target="_blank" class="rebrand-link secondary">Live site → quantistry.ai</a>
+      </div>
+    </div>
+
+    <div class="rebrand-images reveal">
+      <div class="rebrand-img-wrap">
+        <div class="rebrand-img-label"><span class="rebrand-dot before"></span>Before</div>
+        <img src="images/old-website.png" alt="Old Quantistry website" class="rebrand-img">
+      </div>
+      <div class="rebrand-img-wrap">
+        <div class="rebrand-img-label"><span class="rebrand-dot after"></span>After</div>
+        <img src="images/new-website.png" alt="New Quantistry website" class="rebrand-img">
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- AI PROJECTS -->
+  <section class="section" id="projects">
     <div class="section-header reveal">
-      <span class="section-label">Featured Work</span>
+      <span class="section-label">AI Projects</span>
       <div class="section-line"></div>
     </div>
-    <h2 class="section-title reveal">Selected <em>projects</em></h2>
+    <h2 class="section-title reveal">Built with <em>curiosity</em></h2>
 
-    <div class="featured-grid">
-
-      <div class="featured-item reveal">
-        <div class="featured-label">Brand · Quantistry · 2024–2025</div>
-        <div class="featured-title">Company Rebrand</div>
-        <p class="featured-desc">Led a full company rebrand end-to-end over 3 months — brand guidelines, complete website overhaul, pitch decks, and a full suite of branded assets all launching simultaneously. Acted as sole internal lead managing an external agency. The new brand and website are live at quantistry.ai.</p>
-        <a href="rebrand.html" class="featured-link">View case study →</a>
-        <a href="https://quantistry.ai" target="_blank" class="featured-link" style="margin-left: 1.5rem;">Live site →</a>
-      </div>
-
-      <div class="featured-item reveal">
-        <div class="featured-label">Sales Enablement · Quantistry · 2024–2025</div>
-        <div class="featured-title">Customer Success Stories</div>
-        <p class="featured-desc">Written and designed to support enterprise sales conversations. These 2-page case studies were credited by the sales team as key to securing and advancing demos with global manufacturers. 4 stories produced across battery, aerospace, and materials science verticals.</p>
-        <div class="case-studies-grid">
-          <img src="images/Success-Story-2-1.png" alt="Customer success story page 1" class="featured-img" loading="lazy">
-          <img src="images/Success-Story-2-2.png" alt="Customer success story page 2" class="featured-img" loading="lazy">
+    <div class="projects-grid">
+      <a href="books.html" class="project-card reveal">
+        <div class="project-tag">Live tool · AI + APIs</div>
+        <div class="project-title">AI Book Recommender</div>
+        <p class="project-desc">Enter 1–3 favourite books and get AI-powered recommendations based on shared themes and tropes — complete with cover images. Built with Claude API, Google Books API, n8n, and Google Sheets logging.</p>
+        <div class="project-tools">
+          <span class="project-tool">Claude API</span>
+          <span class="project-tool">Google Books API</span>
+          <span class="project-tool">n8n</span>
+          <span class="project-tool">Google Sheets</span>
+          <span class="project-tool">JavaScript</span>
         </div>
-      </div>
+      </a>
 
+      <a href="events.html" class="project-card reveal">
+        <div class="project-tag">Automation · Weekly workflow</div>
+        <div class="project-title">Marketing Events Tracker</div>
+        <p class="project-desc">An automated n8n workflow that searches for relevant marketing conferences every Monday, uses Claude to extract and filter real events, and logs them to Google Sheets — solving a repetitive manual task from my previous role.</p>
+        <div class="project-tools">
+          <span class="project-tool">n8n</span>
+          <span class="project-tool">Tavily API</span>
+          <span class="project-tool">Claude API</span>
+          <span class="project-tool">Google Sheets</span>
+        </div>
+      </a>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- SOCIAL MEDIA WORK -->
+  <!-- SOCIAL MEDIA & CONTENT -->
   <section class="section" id="social">
     <div class="section-header reveal">
       <span class="section-label">Design Work</span>
@@ -831,51 +456,6 @@
         <img src="images/Roupa-5.png" alt="Officina do Homem social post" loading="lazy">
       </div>
     </div>
-
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- AI PROJECTS -->
-  <section class="section" id="projects">
-    <div class="section-header reveal">
-      <span class="section-label">AI Projects</span>
-      <div class="section-line"></div>
-    </div>
-    <h2 class="section-title reveal">Built with <em>curiosity</em></h2>
-
-    <div class="projects-grid">
-
-      <a href="books.html" class="project-card reveal">
-        <div class="project-card-inner">
-          <div class="project-tag">Live tool · AI + APIs</div>
-          <div class="project-title">AI Book Recommender</div>
-          <p class="project-desc">Enter 1–3 favourite books and get AI-powered recommendations based on shared themes and tropes — complete with cover images. Built end-to-end with Claude API, Google Books API, n8n automations, and Google Sheets logging.</p>
-          <div class="project-tools">
-            <span class="project-tool">Claude API</span>
-            <span class="project-tool">Google Books API</span>
-            <span class="project-tool">n8n</span>
-            <span class="project-tool">Google Sheets</span>
-            <span class="project-tool">JavaScript</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="events.html" class="project-card reveal">
-        <div class="project-card-inner">
-          <div class="project-tag">Automation · Weekly workflow</div>
-          <div class="project-title">Marketing Events Tracker</div>
-          <p class="project-desc">An automated n8n workflow that searches for relevant marketing conferences and events every Monday, uses Claude to extract and filter real events, and logs them to Google Sheets — solving a repetitive manual task from my previous role.</p>
-          <div class="project-tools">
-            <span class="project-tool">n8n</span>
-            <span class="project-tool">Tavily API</span>
-            <span class="project-tool">Claude API</span>
-            <span class="project-tool">Google Sheets</span>
-          </div>
-        </div>
-      </a>
-
-    </div>
   </section>
 
   <div class="divider"></div>
@@ -886,52 +466,22 @@
       <span class="section-label">Skills & Tools</span>
       <div class="section-line"></div>
     </div>
-
     <div class="skills-grid">
       <div class="reveal">
         <div class="skill-group-title">Marketing</div>
-        <div class="skill-list">
-          Brand strategy<br>
-          Content creation<br>
-          SEO<br>
-          Copywriting<br>
-          LinkedIn marketing<br>
-          Sales enablement<br>
-          Lead generation<br>
-          Event strategy
-        </div>
+        <div class="skill-list">Brand strategy<br>Content creation<br>SEO<br>Copywriting<br>LinkedIn marketing<br>Sales enablement<br>Lead generation<br>Event strategy</div>
       </div>
       <div class="reveal">
         <div class="skill-group-title">Tools</div>
-        <div class="skill-list">
-          HubSpot<br>
-          Google Analytics<br>
-          Webflow<br>
-          Figma<br>
-          Adobe Illustrator<br>
-          Notion<br>
-          HTML / CSS
-        </div>
+        <div class="skill-list">HubSpot<br>Google Analytics<br>Webflow<br>Figma<br>Adobe Illustrator<br>Notion<br>HTML / CSS</div>
       </div>
       <div class="reveal">
         <div class="skill-group-title">AI & Automation</div>
-        <div class="skill-list">
-          Claude<br>
-          ChatGPT<br>
-          Notion AI<br>
-          n8n workflows<br>
-          HubSpot automation<br>
-          API integrations
-        </div>
+        <div class="skill-list">Claude<br>ChatGPT<br>Notion AI<br>n8n workflows<br>HubSpot automation<br>API integrations</div>
       </div>
       <div class="reveal">
         <div class="skill-group-title">Education</div>
-        <div class="skill-list">
-          BA Marketing<br>
-          & Advertising<br>
-          ESCS Lisbon<br>
-          2017 – 2020
-        </div>
+        <div class="skill-list">BA Marketing<br>& Advertising<br>ESCS Lisbon<br>2017 – 2020</div>
       </div>
     </div>
   </section>
@@ -949,22 +499,13 @@
       <div class="reveal">
         <div class="contact-links">
           <a href="mailto:patriciafaria@outlook.de" class="contact-link">
-            <div>
-              <span class="contact-link-label">Email</span>
-              patriciafaria@outlook.de
-            </div>
+            <div><span class="contact-link-label">Email</span>patriciafaria@outlook.de</div>
           </a>
           <a href="https://linkedin.com/in/patriciasilvafaria" target="_blank" class="contact-link">
-            <div>
-              <span class="contact-link-label">LinkedIn</span>
-              linkedin.com/in/patriciasilvafaria
-            </div>
+            <div><span class="contact-link-label">LinkedIn</span>linkedin.com/in/patriciasilvafaria</div>
           </a>
           <a href="cv.pdf" download class="contact-link">
-            <div>
-              <span class="contact-link-label">CV</span>
-              Download PDF
-            </div>
+            <div><span class="contact-link-label">CV</span>Download PDF</div>
           </a>
         </div>
       </div>
@@ -979,11 +520,7 @@
   <script>
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     reveals.forEach(el => observer.observe(el));
   </script>
