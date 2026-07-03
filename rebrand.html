@@ -24,7 +24,7 @@
 
     .hero { min-height: 100vh; padding-top: 60px; position: relative; overflow: hidden; display: flex; align-items: center; }
     .hero-left { position: relative; z-index: 2; padding: 6rem 4rem 6rem 6rem; max-width: 600px; }
-    .hero-botanical { position: absolute; right: -60px; top: 50%; transform: translateY(-50%); width: 560px; pointer-events: none; z-index: 1; }
+    .hero-botanical { position: absolute; right: -60px; top: 50%; transform: translateY(calc(-50% + 0px)); width: 620px; pointer-events: none; z-index: 1; bottom: -40px; top: auto; }
     .hero-botanical img { width: 100%; display: block; animation: float 9s ease-in-out infinite; }
 
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
@@ -62,7 +62,7 @@
     .ba-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
     .ba-dot.before { background: var(--ink-muted); }
     .ba-dot.after { background: var(--accent); }
-    .ba-img { width: 100%; display: block; border: 0.5px solid var(--border-strong); transition: opacity 0.2s; }
+    .ba-img { width: 100%; display: block; border: none; transition: opacity 0.2s; }
     .ba-img:hover { opacity: 0.88; }
 
     .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
@@ -78,7 +78,7 @@
     .assets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
     .assets-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .asset-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.5rem; }
-    .asset-img { width: 100%; display: block; border: 0.5px solid var(--border-strong); transition: opacity 0.2s; }
+    .asset-img { width: 100%; display: block; border: none; transition: opacity 0.2s; }
     .asset-img:hover { opacity: 0.88; }
 
     .deliverables-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
@@ -127,7 +127,7 @@
       <h1>Quantistry<br><em>Rebrand</em></h1>
       <p class="hero-desc">A full company rebrand delivered end-to-end over 3 months — from brand guidelines and website overhaul to a complete suite of sales and communication assets, all launching simultaneously.</p>
       <div class="meta-row">
-        <div><div class="meta-label">Timeline</div><div class="meta-value">3 months</div></div>
+        <div><div class="meta-label">Timeline</div><div class="meta-value">Aug – Nov 2024</div></div>
         <div><div class="meta-label">My role</div><div class="meta-value">Primary internal lead</div></div>
         <div><div class="meta-label">Agency</div><div class="meta-value">External agency (coordinated)</div></div>
       </div>
