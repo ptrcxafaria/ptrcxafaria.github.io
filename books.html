@@ -72,7 +72,7 @@
 
     .recommendations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 1rem; }
     .book-card { border: 0.5px solid var(--border-strong); padding: 1.25rem; background: var(--white); }
-    .book-cover-placeholder { width: 100%; aspect-ratio: 2/3; background: var(--surface); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 32px; border: 0.5px solid var(--border); }
+    .book-cover { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; margin-bottom: 1rem; }
     .book-cover-placeholder.one { background: #f0ebe3; }
     .book-cover-placeholder.two { background: #e8e0d5; }
     .book-cover-placeholder.three { background: #ede7dc; }
@@ -142,7 +142,7 @@
       </div>
     </div>
     <div class="hero-botanical">
-      <img src="images/small-flower.png" alt="">
+      <img src="images/large-bouquet-png.png" alt="">
     </div>
   </section>
 
@@ -167,19 +167,19 @@
 
       <div class="recommendations-grid reveal">
         <div class="book-card">
-          <div class="book-cover-placeholder one"><span class="book-number">01</span></div>
+          <img src="images/nameofthewind.jpg" alt="The Name of the Wind" class="book-cover">
           <div class="book-title">The Name of the Wind</div>
           <div class="book-author">Patrick Rothfuss</div>
           <p class="book-reason">Legendary world-building and a gifted outsider rising from nothing through sheer wit and determination — echoes the journey of Bilbo and Darrow alike.</p>
         </div>
         <div class="book-card">
-          <div class="book-cover-placeholder two"><span class="book-number">02</span></div>
+          <img src="images/thebladeitself.jpg" alt="The Blade Itself" class="book-cover">
           <div class="book-title">The Blade Itself</div>
           <div class="book-author">Joe Abercrombie</div>
           <p class="book-reason">Gritty, morally complex characters navigating brutal warfare — shares Red Rising's unflinching look at what victory actually costs.</p>
         </div>
         <div class="book-card">
-          <div class="book-cover-placeholder three"><span class="book-number">03</span></div>
+          <img src="images/shewhobecamethesun.jpg" alt="She Who Became the Sun" class="book-cover">
           <div class="book-title">She Who Became the Sun</div>
           <div class="book-author">Shelley Parker-Chan</div>
           <p class="book-reason">A nobody who becomes a force of history through survival and sacrifice — the Poppy War's emotional brutality meets epic historical scale.</p>
