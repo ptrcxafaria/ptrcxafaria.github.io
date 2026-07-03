@@ -155,7 +155,10 @@
     .rebrand-img:hover { opacity: 0.88; }
 
     /* AI PROJECTS */
-    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .projects-wrapper { position: relative; }
+    .projects-accent { position: absolute; top: -80px; right: -40px; width: 280px; pointer-events: none; z-index: 1; opacity: 0.9; animation: float 10s ease-in-out infinite; }
+    .projects-accent img { width: 100%; display: block; }
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; position: relative; z-index: 2; }
     .project-card { border: 0.5px solid var(--border-strong); padding: 1.75rem; text-decoration: none; color: inherit; display: block; transition: border-color 0.2s, transform 0.2s; }
     .project-card:hover { border-color: var(--accent-light); transform: translateY(-3px); }
     .project-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
@@ -249,7 +252,7 @@
         <img src="images/medium-bouquet-png.png" alt="">
       </div>
       <div class="hero-photo">
-        <img src="images/me2.png" alt="Patrícia Faria">
+        <img src="images/photo.jpg" alt="Patrícia Faria">
       </div>
     </div>
   </section>
@@ -276,7 +279,7 @@
           <li>Led full company rebrand end-to-end with an external agency — website, brand guidelines, pitch decks, and all branded assets launching simultaneously.</li>
           <li>Built sales collateral including client-facing 2-pagers the sales team credited as key to securing demos and advancing enterprise conversations.</li>
           <li>Set up HubSpot email automations, Webflow form routing, and HTML/CSS fixes — owned the full digital presence including SEO and LinkedIn.</li>
-          <li>Researched and coordinated international conference strategy, resulting in the company attending and building partnerships at key events such as Slush and Materials Week Europe.</li>
+          <li>Researched and coordinated international conference strategy, resulting in the company attending and building partnerships at Slush and Materials Week Europe.</li>
         </ul>
       </div>
     </div>
@@ -290,7 +293,7 @@
       </div>
       <div>
         <div class="work-title">Product Marketing Intern</div>
-        <div class="work-subtitle">B2B Learning & Development SaaS (Remote)</div>
+        <div class="work-subtitle">B2B Learning & Development SaaS</div>
         <ul class="work-bullets">
           <li>Conducted high-volume LinkedIn prospecting, sourcing ~250 HR and People Operations contacts daily across Europe to build the sales pipeline.</li>
           <li>Managed LinkedIn content creation and publishing to support brand visibility and lead generation.</li>
@@ -369,6 +372,10 @@
     </div>
     <h2 class="section-title reveal">Built with <em>curiosity</em></h2>
 
+    <div class="projects-wrapper">
+      <div class="projects-accent">
+        <img src="images/accent.png" alt="">
+      </div>
     <div class="projects-grid">
       <a href="books.html" class="project-card reveal">
         <div class="project-tag">Live tool · AI + APIs</div>
@@ -395,6 +402,7 @@
         </div>
       </a>
     </div>
+    </div>
   </section>
 
   <div class="divider"></div>
@@ -415,7 +423,6 @@
         <img src="images/Quantistry-1.png" alt="Quantistry social post" loading="lazy">
         <img src="images/Quantistry-2.png" alt="Quantistry social post" loading="lazy">
         <img src="images/Quantistry-3.png" alt="Quantistry social post" loading="lazy">
-        <img src="images/Quantistry-4.png" alt="Quantistry social post" loading="lazy">
       </div>
     </div>
 
@@ -448,7 +455,7 @@
     <div class="client-section reveal">
       <div class="client-label">Agency · Menswear Retail · Azores</div>
       <div class="client-name">Officina do Homem</div>
-      <div class="client-desc">Lifestyle campaigns, and promotional content for a men's fashion retailer</div>
+      <div class="client-desc">Product photography, lifestyle campaigns, and promotional content for a men's fashion retailer</div>
       <div class="image-grid">
         <img src="images/Roupa-1.png" alt="Officina do Homem social post" loading="lazy">
         <img src="images/Roupa-2.png" alt="Officina do Homem social post" loading="lazy">
