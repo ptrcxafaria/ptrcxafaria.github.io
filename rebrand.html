@@ -90,17 +90,13 @@
     .deliverable-title { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
     .deliverable-desc { font-size: 12px; color: var(--ink-muted); line-height: 1.5; }
 
-    .outcome-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .outcome-title { font-family: 'Bellavoir', 'Cormorant Garamond', serif; font-size: 40px; font-weight: 400; line-height: 1.1; margin-bottom: 1rem; }
+    .outcome-inner { max-width: 700px; margin: 0 auto; }
+    .outcome-title { font-family: 'Bellavoir', 'Cormorant Garamond', serif; font-size: 40px; font-weight: 400; line-height: 1.1; margin-bottom: 1.5rem; text-align: center; }
     .outcome-title em { font-style: italic; color: var(--ink-muted); }
     .outcome-points { list-style: none; }
     .outcome-points li { font-size: 14px; color: var(--ink-soft); padding: 0.75rem 0; border-bottom: 0.5px solid var(--border); display: flex; gap: 0.75rem; }
     .outcome-points li:last-child { border-bottom: none; }
     .outcome-icon { color: var(--accent); flex-shrink: 0; }
-    .recommendation { background: var(--white); border: 0.5px solid var(--border-strong); padding: 1.75rem; }
-    .rec-quote { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--ink-soft); line-height: 1.7; margin-bottom: 1.25rem; }
-    .rec-author { font-size: 12px; color: var(--ink-muted); }
-    .rec-author strong { display: block; font-size: 13px; color: var(--ink); margin-bottom: 2px; }
 
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -114,7 +110,7 @@
       .hero h1 { font-size: 44px; }
       .surface-section { padding: 4rem 1.5rem; }
       .section { padding: 4rem 1.5rem; }
-      .ba-grid, .assets-grid, .assets-grid-3, .process-grid, .deliverables-grid, .outcome-inner { grid-template-columns: 1fr; }
+      .ba-grid, .assets-grid, .assets-grid-3, .process-grid, .deliverables-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -205,12 +201,6 @@
           <li><span class="outcome-icon">—</span>Complete brand system adopted by the full team from day one</li>
           <li><span class="outcome-icon">—</span>Delivered within 3 months alongside other ongoing marketing responsibilities</li>
         </ul>
-      </div>
-      <div class="reveal">
-        <div class="recommendation">
-          <p class="rec-quote">"Patricia served as a reliable internal point of contact, ensuring that project milestones were met and that communication between stakeholders remained clear and constructive. Her organisational diligence was evident throughout this initiative and the outcome reflected well on her commitment to quality."</p>
-          <div class="rec-author"><strong>Eric A. Swedersky</strong>Chief Commercial Officer, Quantistry</div>
-        </div>
       </div>
     </div>
   </div>
